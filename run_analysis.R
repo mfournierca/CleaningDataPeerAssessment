@@ -2,6 +2,7 @@
 #Coursera Data Science Specialization. 
 #Course details can be found at: https://class.coursera.org/getdata-002
 
+#the raw data zip file. this file must exist. 
 dataZip="getdata-projectfiles-UCI HAR Dataset.zip"
 
 #
@@ -10,7 +11,7 @@ dataZip="getdata-projectfiles-UCI HAR Dataset.zip"
 
 #ensure that the data is in the working directory
 if (!file.exists(dataZip)) {
-  print(paste("data set does not exist: ", dataZip, sep=""))
+  print(paste("data set does not exist in the working directory: ", dataZip, sep=""))
   return
 }
 
@@ -62,8 +63,8 @@ testSubjects <- read.csv(paste(dataRoot, "test/subject_test.txt", sep="/"),
                           header=FALSE)
 
 print("adding test subjects and activity labels")
-testData$activityId = testLabels$V2
-testData$subjectId = testSubjects$V1
+testData$activityId <- testLabels$V1
+testData$subjectId <- testSubjects$V1
 
 #
 #read the train data
@@ -87,8 +88,8 @@ trainSubjects <- read.csv(paste(dataRoot, "train/subject_train.txt",sep="/"),
                          header=FALSE)
 
 print("adding training subjects and activity labels")
-trainData$activityId = trainLabels$V2
-trainData$subjectId = trainSubjects$V1
+trainData$activityId <- trainLabels$V1
+trainData$subjectId <- trainSubjects$V1
 
 #
 # combine the data
